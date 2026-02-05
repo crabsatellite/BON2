@@ -11,6 +11,7 @@ import com.github.parker8283.bon2.cli.CLIErrorHandler;
 import com.github.parker8283.bon2.cli.CLIProgressListener;
 import com.github.parker8283.bon2.data.BONFiles;
 import com.github.parker8283.bon2.data.IErrorHandler;
+import com.github.parker8283.bon2.data.LibraryManager;
 import com.github.parker8283.bon2.data.MappingManager;
 import com.github.parker8283.bon2.data.MappingVersion;
 import com.github.parker8283.bon2.data.VersionLookup;
@@ -42,6 +43,10 @@ public class BON2 {
         parser.accepts("mappingsDir", "Custom directory containing mapping files (fields.csv, methods.csv)").withRequiredArg();
         parser.accepts("download", "Download mappings. Use with --mappingsVer or 'all' to download all available mappings");
         parser.accepts("list", "List all available mappings (bundled + Gradle cache)");
+        // Library management options
+        parser.accepts("download-libs", "Download common libraries. Use with --lib or 'all' to download all");
+        parser.accepts("list-libs", "List all available libraries for download");
+        parser.accepts("lib", "Library name or Maven coordinate (groupId:artifactId:version)").withRequiredArg();
 
         try {
             OptionSet options = parser.parse(args);
@@ -62,6 +67,32 @@ public class BON2 {
             }
             
             MappingManager mappingManager = new MappingManager();
+            LibraryManager libraryManager = new LibraryManager();
+            
+            // Handle --list-libs command
+            if(options.has("list-libs")) {
+                libraryManager.listLibraries();
+                System.exit(0);
+            }
+            
+            // Handle --download-libs command
+            if(options.has("download-libs")) {
+                if (options.has("lib")) {
+                    String lib = (String) options.valueOf("lib");
+                    if ("all".equalsIgnoreCase(lib)) {
+                        libraryManager.downloadAllLibraries();
+                    } else if (lib.contains(":")) {
+                        // Maven coordinate
+                        libraryManager.downloadByCoordinate(lib);
+                    } else {
+                        // Library name
+                        libraryManager.downloadLibrary(lib);
+                    }
+                } else {
+                    libraryManager.downloadAllLibraries();
+                }
+                System.exit(0);
+            }
             
             // Handle --list command
             if(options.has("list")) {

@@ -36,15 +36,15 @@ This fork includes modifications to make BON2 work with modern Java (17+) and to
 
 ## Available Mappings for Download
 
-| Minecraft Version | Mapping Key           |
-| ----------------- | --------------------- |
-| 1.12.2            | 1.12.2-stable_39      |
+| Minecraft Version | Mapping Key              |
+| ----------------- | ------------------------ |
+| 1.12.2            | 1.12.2-stable_39         |
 | 1.12.2            | 1.12.2-snapshot_20171003 |
-| 1.11.2            | 1.11.2-stable_32      |
-| 1.10.2            | 1.10.2-stable_29      |
-| 1.9.4             | 1.9.4-stable_26       |
-| 1.8.9             | 1.8.9-stable_22       |
-| 1.7.10            | 1.7.10-stable_12      |
+| 1.11.2            | 1.11.2-stable_32         |
+| 1.10.2            | 1.10.2-stable_29         |
+| 1.9.4             | 1.9.4-stable_26          |
+| 1.8.9             | 1.8.9-stable_22          |
+| 1.7.10            | 1.7.10-stable_12         |
 
 ## Building
 
@@ -99,6 +99,7 @@ You can add custom mapping files for versions not available for download:
 ### Mapping File Format
 
 **fields.csv:**
+
 ```csv
 searge,name,side,desc
 field_70170_p,worldObj,2,
@@ -106,6 +107,7 @@ field_70165_t,posX,2,
 ```
 
 **methods.csv:**
+
 ```csv
 searge,name,side,desc
 func_70003_b,shouldExecute,2,
