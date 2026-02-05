@@ -22,13 +22,35 @@ public class UrlValidationTest {
     private static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
     
     static {
-        // MCP Mappings
+        // MCP Mappings - All versions from 1.7.10 to 1.16.5
+        // 1.16.x (snapshot only)
+        MAPPING_URLS.put("1.16.5-snapshot_20210309", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20210309-1.16.5/mcp_snapshot-20210309-1.16.5.zip");
+        MAPPING_URLS.put("1.16.3-snapshot_20201028", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20201028-1.16.3/mcp_snapshot-20201028-1.16.3.zip");
+        MAPPING_URLS.put("1.16.2-snapshot_20200916", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20200916-1.16.2/mcp_snapshot-20200916-1.16.2.zip");
+        MAPPING_URLS.put("1.16.1-snapshot_20200723", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20200723-1.16.1/mcp_snapshot-20200723-1.16.1.zip");
+        MAPPING_URLS.put("1.16-snapshot_20200514", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20200514-1.16/mcp_snapshot-20200514-1.16.zip");
+        // 1.15.x
+        MAPPING_URLS.put("1.15.1-snapshot_20200220", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20200220-1.15.1/mcp_snapshot-20200220-1.15.1.zip");
+        // 1.14.x
+        MAPPING_URLS.put("1.14.3-snapshot_20190719", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20190719-1.14.3/mcp_snapshot-20190719-1.14.3.zip");
+        MAPPING_URLS.put("1.14.2-snapshot_20190608", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20190608-1.14.2/mcp_snapshot-20190608-1.14.2.zip");
+        // 1.13.x
+        MAPPING_URLS.put("1.13-snapshot_20180921", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20180921-1.13/mcp_snapshot-20180921-1.13.zip");
+        // 1.12.x
         MAPPING_URLS.put("1.12.2-stable_39", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/39-1.12/mcp_stable-39-1.12.zip");
-        MAPPING_URLS.put("1.12.2-snapshot_20171003", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20171003-1.12/mcp_snapshot-20171003-1.12.zip");
+        MAPPING_URLS.put("1.12-snapshot_20171003", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_snapshot/20171003-1.12/mcp_snapshot-20171003-1.12.zip");
+        // 1.11.x
         MAPPING_URLS.put("1.11.2-stable_32", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/32-1.11/mcp_stable-32-1.11.zip");
+        // 1.10.x
         MAPPING_URLS.put("1.10.2-stable_29", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/29-1.10.2/mcp_stable-29-1.10.2.zip");
+        // 1.9.x
         MAPPING_URLS.put("1.9.4-stable_26", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/26-1.9.4/mcp_stable-26-1.9.4.zip");
+        MAPPING_URLS.put("1.9-stable_24", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/24-1.9/mcp_stable-24-1.9.zip");
+        // 1.8.x
         MAPPING_URLS.put("1.8.9-stable_22", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/22-1.8.9/mcp_stable-22-1.8.9.zip");
+        MAPPING_URLS.put("1.8.8-stable_20", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/20-1.8.8/mcp_stable-20-1.8.8.zip");
+        MAPPING_URLS.put("1.8-stable_18", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/18-1.8/mcp_stable-18-1.8.zip");
+        // 1.7.x
         MAPPING_URLS.put("1.7.10-stable_12", "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/12-1.7.10/mcp_stable-12-1.7.10.zip");
         
         // Common Libraries (Maven coordinates)
