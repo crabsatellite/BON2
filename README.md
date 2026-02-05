@@ -22,6 +22,10 @@ This fork includes modifications to make BON2 work with modern Java (17+) and to
 
 - Added Set tracking to prevent "duplicate entry" errors when processing JARs with duplicate entries
 
+### 4. Fixed Version Parsing for Gradle Cache Format
+
+- Fixed `getVersionFor()` to correctly parse `39-1.12` folder format (extracts `39`, not `1.12`)
+
 ## Supported Mappings (Offline Mode)
 
 | Minecraft Version | Stable | Snapshot |
@@ -56,11 +60,17 @@ java -jar BON-2.4.0.CUSTOM-all.jar
 ### CLI Mode
 
 ```bash
-java -jar BON-2.4.0.CUSTOM-all.jar --input input.jar --output output.jar --mapping stable_39
+java -jar BON-2.4.0.CUSTOM-all.jar --inputJar input.jar --outputJar output.jar --mappingsVer stable_39
 ```
 
 For 1.12.2 deobfuscation, use `stable_39` or `snapshot_20171003`.
 
 ## Original Project
 
-Old releases available in releases tab. Newer releases available on [Jenkins](http://ci.tterrag.com/job/BON2/) (may be unavailable).
+- Original BON2 by [Parker8283](https://github.com/Parker8283/BON2)
+- Old releases available in releases tab
+- Jenkins builds at [ci.tterrag.com](http://ci.tterrag.com/job/BON2/) (may be unavailable)
+
+## License
+
+This project is licensed under the same terms as the original BON2 project.
