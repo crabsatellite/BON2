@@ -56,25 +56,44 @@ public class UrlValidationTest {
         // Common Libraries (Maven coordinates)
         LIBRARY_COORDS.put("gson", "com.google.code.gson:gson:2.8.0");
         LIBRARY_COORDS.put("json-simple", "com.googlecode.json-simple:json-simple:1.1.1");
+        LIBRARY_COORDS.put("jackson-core", "com.fasterxml.jackson.core:jackson-core:2.9.9");
+        LIBRARY_COORDS.put("jackson-databind", "com.fasterxml.jackson.core:jackson-databind:2.9.9");
+        LIBRARY_COORDS.put("jackson-annotations", "com.fasterxml.jackson.core:jackson-annotations:2.9.9");
         LIBRARY_COORDS.put("guava", "com.google.guava:guava:21.0");
         LIBRARY_COORDS.put("commons-io", "commons-io:commons-io:2.5");
         LIBRARY_COORDS.put("commons-lang3", "org.apache.commons:commons-lang3:3.5");
         LIBRARY_COORDS.put("commons-codec", "commons-codec:commons-codec:1.10");
+        LIBRARY_COORDS.put("commons-compress", "org.apache.commons:commons-compress:1.8.1");
+        LIBRARY_COORDS.put("httpclient", "org.apache.httpcomponents:httpclient:4.5.2");
+        LIBRARY_COORDS.put("httpcore", "org.apache.httpcomponents:httpcore:4.4.4");
         LIBRARY_COORDS.put("log4j-api", "org.apache.logging.log4j:log4j-api:2.8.1");
         LIBRARY_COORDS.put("log4j-core", "org.apache.logging.log4j:log4j-core:2.8.1");
         LIBRARY_COORDS.put("slf4j-api", "org.slf4j:slf4j-api:1.7.25");
         LIBRARY_COORDS.put("netty-all", "io.netty:netty-all:4.1.9.Final");
         LIBRARY_COORDS.put("jsr305", "com.google.code.findbugs:jsr305:3.0.1");
         LIBRARY_COORDS.put("javax.annotation-api", "javax.annotation:javax.annotation-api:1.3.2");
+        LIBRARY_COORDS.put("jsr311-api", "javax.ws.rs:jsr311-api:1.1.1");
         LIBRARY_COORDS.put("lwjgl", "org.lwjgl.lwjgl:lwjgl:2.9.3");
         LIBRARY_COORDS.put("lwjgl_util", "org.lwjgl.lwjgl:lwjgl_util:2.9.3");
+        LIBRARY_COORDS.put("jinput", "net.java.jinput:jinput:2.0.5");
+        LIBRARY_COORDS.put("jutils", "net.java.jutils:jutils:1.0.0");
         LIBRARY_COORDS.put("trove4j", "net.sf.trove4j:trove4j:3.0.3");
         LIBRARY_COORDS.put("vecmath", "javax.vecmath:vecmath:1.5.2");
+        LIBRARY_COORDS.put("joml", "org.joml:joml:1.9.25");
         LIBRARY_COORDS.put("icu4j", "com.ibm.icu:icu4j:60.2");
         LIBRARY_COORDS.put("fastutil", "it.unimi.dsi:fastutil:7.1.0");
         LIBRARY_COORDS.put("asm", "org.ow2.asm:asm:5.2");
         LIBRARY_COORDS.put("asm-commons", "org.ow2.asm:asm-commons:5.2");
         LIBRARY_COORDS.put("asm-tree", "org.ow2.asm:asm-tree:5.2");
+        LIBRARY_COORDS.put("asm-analysis", "org.ow2.asm:asm-analysis:5.2");
+        LIBRARY_COORDS.put("asm-util", "org.ow2.asm:asm-util:5.2");
+        LIBRARY_COORDS.put("lzma", "com.github.jponge:lzma-java:1.3");
+        LIBRARY_COORDS.put("jna", "net.java.dev.jna:jna:4.4.0");
+        LIBRARY_COORDS.put("jna-platform", "net.java.dev.jna:jna-platform:4.4.0");
+        LIBRARY_COORDS.put("oshi-core", "com.github.oshi:oshi-core:3.4.0");
+        LIBRARY_COORDS.put("bcprov-jdk15on", "org.bouncycastle:bcprov-jdk15on:1.58");
+        LIBRARY_COORDS.put("jopt-simple", "net.sf.jopt-simple:jopt-simple:5.0.3");
+        LIBRARY_COORDS.put("java-objc-bridge", "ca.weblite:java-objc-bridge:1.0.0");
     }
     
     public static void main(String[] args) {

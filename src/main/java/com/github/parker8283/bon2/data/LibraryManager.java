@@ -21,6 +21,11 @@ public class LibraryManager {
         BUILTIN_LIBS.put("gson", "com.google.code.gson:gson:2.8.0");
         BUILTIN_LIBS.put("json-simple", "com.googlecode.json-simple:json-simple:1.1.1");
         
+        // Jackson (JSON serialization - used by many mods)
+        BUILTIN_LIBS.put("jackson-core", "com.fasterxml.jackson.core:jackson-core:2.9.9");
+        BUILTIN_LIBS.put("jackson-databind", "com.fasterxml.jackson.core:jackson-databind:2.9.9");
+        BUILTIN_LIBS.put("jackson-annotations", "com.fasterxml.jackson.core:jackson-annotations:2.9.9");
+        
         // Google libraries
         BUILTIN_LIBS.put("guava", "com.google.guava:guava:21.0");
         
@@ -28,6 +33,11 @@ public class LibraryManager {
         BUILTIN_LIBS.put("commons-io", "commons-io:commons-io:2.5");
         BUILTIN_LIBS.put("commons-lang3", "org.apache.commons:commons-lang3:3.5");
         BUILTIN_LIBS.put("commons-codec", "commons-codec:commons-codec:1.10");
+        BUILTIN_LIBS.put("commons-compress", "org.apache.commons:commons-compress:1.8.1");
+        
+        // Apache HTTP (used by some mods for web requests)
+        BUILTIN_LIBS.put("httpclient", "org.apache.httpcomponents:httpclient:4.5.2");
+        BUILTIN_LIBS.put("httpcore", "org.apache.httpcomponents:httpcore:4.4.4");
         
         // Logging
         BUILTIN_LIBS.put("log4j-api", "org.apache.logging.log4j:log4j-api:2.8.1");
@@ -40,10 +50,17 @@ public class LibraryManager {
         // Annotations
         BUILTIN_LIBS.put("jsr305", "com.google.code.findbugs:jsr305:3.0.1");
         BUILTIN_LIBS.put("javax.annotation-api", "javax.annotation:javax.annotation-api:1.3.2");
+        BUILTIN_LIBS.put("jsr311-api", "javax.ws.rs:jsr311-api:1.1.1");
         
         // LWJGL (use stable Maven Central version)
         BUILTIN_LIBS.put("lwjgl", "org.lwjgl.lwjgl:lwjgl:2.9.3");
         BUILTIN_LIBS.put("lwjgl_util", "org.lwjgl.lwjgl:lwjgl_util:2.9.3");
+        
+        // JInput (input handling)
+        BUILTIN_LIBS.put("jinput", "net.java.jinput:jinput:2.0.5");
+        
+        // JUtils (used by JInput)
+        BUILTIN_LIBS.put("jutils", "net.java.jutils:jutils:1.0.0");
         
         // Trove (collections)
         BUILTIN_LIBS.put("trove4j", "net.sf.trove4j:trove4j:3.0.3");
@@ -51,16 +68,43 @@ public class LibraryManager {
         // Vecmath (use javax groupId)
         BUILTIN_LIBS.put("vecmath", "javax.vecmath:vecmath:1.5.2");
         
-        // ICU4J (for older versions)
+        // JOML (modern math library - used by newer mods)
+        BUILTIN_LIBS.put("joml", "org.joml:joml:1.9.25");
+        
+        // ICU4J (internationalization)
         BUILTIN_LIBS.put("icu4j", "com.ibm.icu:icu4j:60.2");
         
         // FastUtil (collections)
         BUILTIN_LIBS.put("fastutil", "it.unimi.dsi:fastutil:7.1.0");
         
-        // ASM (bytecode)
+        // ASM (bytecode manipulation)
         BUILTIN_LIBS.put("asm", "org.ow2.asm:asm:5.2");
         BUILTIN_LIBS.put("asm-commons", "org.ow2.asm:asm-commons:5.2");
         BUILTIN_LIBS.put("asm-tree", "org.ow2.asm:asm-tree:5.2");
+        BUILTIN_LIBS.put("asm-analysis", "org.ow2.asm:asm-analysis:5.2");
+        BUILTIN_LIBS.put("asm-util", "org.ow2.asm:asm-util:5.2");
+        
+        // LZMA (compression)
+        BUILTIN_LIBS.put("lzma", "com.github.jponge:lzma-java:1.3");
+        
+        // JNA (native access)
+        BUILTIN_LIBS.put("jna", "net.java.dev.jna:jna:4.4.0");
+        BUILTIN_LIBS.put("jna-platform", "net.java.dev.jna:jna-platform:4.4.0");
+        
+        // OshiCore (system info)
+        BUILTIN_LIBS.put("oshi-core", "com.github.oshi:oshi-core:3.4.0");
+        
+        // Bouncy Castle (cryptography)
+        BUILTIN_LIBS.put("bcprov-jdk15on", "org.bouncycastle:bcprov-jdk15on:1.58");
+        
+        // JOpt Simple (command line parsing)
+        BUILTIN_LIBS.put("jopt-simple", "net.sf.jopt-simple:jopt-simple:5.0.3");
+        
+        // Java-ObjC-Bridge (macOS)
+        BUILTIN_LIBS.put("java-objc-bridge", "ca.weblite:java-objc-bridge:1.0.0");
+        
+        // Note: authlib, patchy, text-io are not on Maven Central
+        // They can be found in Minecraft libraries folder or added manually
     }
     
     private static final String MAVEN_CENTRAL = "https://repo1.maven.org/maven2/";
