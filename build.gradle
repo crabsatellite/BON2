@@ -33,11 +33,13 @@ task copyAndReplace(type: Copy) {
     from(sourceSets.main.java) {
         include '**/BON2.java'
         expand 'DEV': project.version
+        filteringCharset = 'UTF-8'
     }
     from(sourceSets.main.java) {
         exclude '**/BON2.java'
     }
     into project.getBuildDir().toString() + "/sources/java"
+    filteringCharset = 'UTF-8'
 }
 tasks.compileJava.dependsOn copyAndReplace
 tasks.compileJava.setSource(project.getBuildDir().toString() + '/sources/java')

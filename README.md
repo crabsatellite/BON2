@@ -26,20 +26,25 @@ This fork includes modifications to make BON2 work with modern Java (17+) and to
 
 - Fixed `getVersionFor()` to correctly parse `39-1.12` folder format (extracts `39`, not `1.12`)
 
-## Supported Mappings (Offline Mode)
+### 5. Mapping Download and Management (NEW!)
 
-| Minecraft Version | Stable | Snapshot |
-| ----------------- | ------ | -------- |
-| 1.12/1.12.2       | 39     | 20171003 |
-| 1.11.2            | 32     | 20161220 |
-| 1.11              | 30, 31 | Multiple |
-| 1.10.2            | 29     | 20160518 |
-| 1.9.4             | 26     | 20160501 |
-| 1.9               | 24     | Multiple |
-| 1.8.9             | 22     | Multiple |
-| 1.8.8             | 20     | 20150913 |
-| 1.8               | 18     | Multiple |
-| 1.7.10            | 12     | 20140925 |
+- Added `--download` command to download MCP mappings from Forge Maven
+- Added `--list` command to list all available mappings
+- Added `--mappingsDir` to use custom mapping directory
+- Mappings are downloaded to `mappings/` folder next to the JAR
+- Users can add custom mapping files for unsupported versions
+
+## Available Mappings for Download
+
+| Minecraft Version | Mapping Key           |
+| ----------------- | --------------------- |
+| 1.12.2            | 1.12.2-stable_39      |
+| 1.12.2            | 1.12.2-snapshot_20171003 |
+| 1.11.2            | 1.11.2-stable_32      |
+| 1.10.2            | 1.10.2-stable_29      |
+| 1.9.4             | 1.9.4-stable_26       |
+| 1.8.9             | 1.8.9-stable_22       |
+| 1.7.10            | 1.7.10-stable_12      |
 
 ## Building
 
@@ -57,13 +62,55 @@ The output JAR will be in `build/libs/BON-2.4.0.CUSTOM-all.jar`
 java -jar BON-2.4.0.CUSTOM-all.jar
 ```
 
-### CLI Mode
+### Download Mappings First (Recommended for new users)
 
 ```bash
-java -jar BON-2.4.0.CUSTOM-all.jar --inputJar input.jar --outputJar output.jar --mappingsVer stable_39
+# Download all available mappings
+java -jar BON-2.4.0.CUSTOM-all.jar --download
+
+# Or download specific version
+java -jar BON-2.4.0.CUSTOM-all.jar --download --mappingsVer 1.12.2-stable_39
+
+# List available mappings
+java -jar BON-2.4.0.CUSTOM-all.jar --list
 ```
 
-For 1.12.2 deobfuscation, use `stable_39` or `snapshot_20171003`.
+### CLI Mode - Deobfuscate a Mod
+
+```bash
+# Using downloaded mappings (auto-detected)
+java -jar BON-2.4.0.CUSTOM-all.jar --inputJar input.jar --outputJar output.jar --mappingsVer 1.12.2
+
+# Using Gradle cache mappings
+java -jar BON-2.4.0.CUSTOM-all.jar --inputJar input.jar --outputJar output.jar --mappingsVer stable_39
+
+# Using custom mapping directory
+java -jar BON-2.4.0.CUSTOM-all.jar --inputJar input.jar --outputJar output.jar --mappingsDir ./my-mappings --mappingsVer custom
+```
+
+## Custom Mappings
+
+You can add custom mapping files for versions not available for download:
+
+1. Create a folder in `mappings/` directory (e.g., `mappings/1.6.4/`)
+2. Add `fields.csv` and `methods.csv` files
+3. Use with `--mappingsDir mappings/1.6.4`
+
+### Mapping File Format
+
+**fields.csv:**
+```csv
+searge,name,side,desc
+field_70170_p,worldObj,2,
+field_70165_t,posX,2,
+```
+
+**methods.csv:**
+```csv
+searge,name,side,desc
+func_70003_b,shouldExecute,2,
+func_70037_a,readFromNBT,2,
+```
 
 ## Original Project
 
