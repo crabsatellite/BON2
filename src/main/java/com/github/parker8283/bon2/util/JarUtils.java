@@ -80,12 +80,14 @@ public class JarUtils {
         }
         int classesWritten = 0;
         Set<String> dirs = Sets.newHashSet();
+        Set<String> writtenEntries = Sets.newHashSet(); // Track written entries to prevent duplicates
         JarOutputStream jout = null;
         progress.start(cc.getClasses().size() + cc.getExtraFiles().size() + 1, "Writing remapped JAR");
         try {
             jout = new JarOutputStream(new FileOutputStream(file));
             addDirectories(JarFile.MANIFEST_NAME, dirs);
             jout.putNextEntry(new JarEntry(JarFile.MANIFEST_NAME));
+            writtenEntries.add(JarFile.MANIFEST_NAME);
             Manifest manifest = cc.getManifest();
             if (manifest != null) {
                 manifest.write(jout);
@@ -93,13 +95,23 @@ public class JarUtils {
             jout.closeEntry();
             progress.setProgress(++classesWritten);
             for(ClassNode classNode : cc.getClasses()) {
+                String entryName = classNode.name + ".class";
+                if (writtenEntries.contains(entryName)) {
+                    continue; // Skip duplicate class entries
+                }
+                writtenEntries.add(entryName);
                 addDirectories(classNode.name, dirs);
-                jout.putNextEntry(new JarEntry(classNode.name + ".class"));
+                jout.putNextEntry(new JarEntry(entryName));
                 jout.write(IOUtils.writeClassToBytes(classNode));
                 jout.closeEntry();
                 progress.setProgress(++classesWritten);
             }
             for(Map.Entry<String, byte[]> entry : cc.getExtraFiles().entrySet()) {
+                String entryName = entry.getKey();
+                if (writtenEntries.contains(entryName)) {
+                    continue; // Skip duplicate entries
+                }
+                writtenEntries.add(entryName);
                 addDirectories(entry.getKey(), dirs);
                 jout.putNextEntry(new JarEntry(entry.getKey()));
                 jout.write(entry.getValue());
@@ -107,7 +119,12 @@ public class JarUtils {
                 progress.setProgress(++classesWritten);
             }
             for(String dirPath : dirs) {
-                jout.putNextEntry(new JarEntry(dirPath + "/"));
+                String dirEntryName = dirPath + "/";
+                if (writtenEntries.contains(dirEntryName)) {
+                    continue; // Skip duplicate directory entries
+                }
+                writtenEntries.add(dirEntryName);
+                jout.putNextEntry(new JarEntry(dirEntryName));
                 jout.closeEntry();
             }
             jout.flush();
