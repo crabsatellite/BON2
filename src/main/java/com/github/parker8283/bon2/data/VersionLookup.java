@@ -40,14 +40,21 @@ public enum VersionLookup {
     public String getVersionFor(String version) {
         if (jsoncache != null) {
             // Parse version string to extract the numeric part
-            // e.g., "stable_39" -> "39", "snapshot_20171003" -> "20171003"
+            // Handles formats like:
+            // - "stable_39" -> "39"
+            // - "snapshot_20171003" -> "20171003"
+            // - "39-1.12" -> "39"
+            // - "20171003-1.12" -> "20171003"
             String numericVersion = version;
+            
+            // Handle underscore format like "stable_39" or "snapshot_20171003"
             if (version.contains("_")) {
                 numericVersion = version.substring(version.indexOf("_") + 1);
             }
-            // Also handle hyphen format like "snapshot-20171003"
-            if (version.contains("-")) {
-                numericVersion = version.substring(version.indexOf("-") + 1);
+            // Handle hyphen format like "39-1.12" (Gradle cache folder format)
+            // Take the part BEFORE the hyphen as it's the mapping number
+            else if (version.contains("-")) {
+                numericVersion = version.substring(0, version.indexOf("-"));
             }
             
             for (String s : jsoncache.getVersions()) {

@@ -1,5 +1,4 @@
-BON2 - Forked with Java 17+ and Offline Support
-====
+# BON2 - Forked with Java 17+ and Offline Support
 
 A rewrite for Immibis's bearded-octo-nemesis for ForgeGradle.
 
@@ -8,22 +7,25 @@ This fork includes modifications to make BON2 work with modern Java (17+) and to
 ## Changes in this Fork
 
 ### 1. Gradle 8.5 Compatibility
+
 - Upgraded from Gradle 2.9 to Gradle 8.5
 - Updated `build.gradle` syntax (`compile` → `implementation`, etc.)
 - Updated deprecated API calls
 
 ### 2. Offline mcpbot.bspk.rs Fallback
+
 - The original mcpbot.bspk.rs server is no longer available
 - Added hardcoded fallback data for MCP mappings
 - Supported versions: 1.7.10, 1.8, 1.8.8, 1.8.9, 1.9, 1.9.4, 1.10.2, 1.11, 1.11.2, 1.12/1.12.2
 
 ### 3. Fixed Duplicate JAR Entry Handling
+
 - Added Set tracking to prevent "duplicate entry" errors when processing JARs with duplicate entries
 
 ## Supported Mappings (Offline Mode)
 
 | Minecraft Version | Stable | Snapshot |
-|-------------------|--------|----------|
+| ----------------- | ------ | -------- |
 | 1.12/1.12.2       | 39     | 20171003 |
 | 1.11.2            | 32     | 20161220 |
 | 1.11              | 30, 31 | Multiple |
@@ -46,11 +48,13 @@ The output JAR will be in `build/libs/BON-2.4.0.CUSTOM-all.jar`
 ## Usage
 
 ### GUI Mode
+
 ```bash
 java -jar BON-2.4.0.CUSTOM-all.jar
 ```
 
 ### CLI Mode
+
 ```bash
 java -jar BON-2.4.0.CUSTOM-all.jar --input input.jar --output output.jar --mapping stable_39
 ```
